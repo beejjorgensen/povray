@@ -1,3 +1,31 @@
+#macro Glow(p0, p1, p2, p3)
+    object {
+        object {
+            mesh {
+                triangle { p0, p1, p2 }
+                triangle { p0, p1, p3 }
+                triangle { p0, p2, p3 }
+                triangle { p1, p2, p3 }
+
+                scale 1.5
+                pigment { rgbt 1 }
+                //pigment { rgbt <1,0,0,0.5> }
+                hollow
+
+                interior {
+                    media {
+                        emission <0.1, 0.1, 0>
+                    }
+                }
+
+                rotate <0,0,45>
+            }
+            rotate <-35,0,0>
+        }
+        rotate <0,120*clock,0>
+    }
+#end
+
 #macro Sierpinski(d, p0, p1, p2, p3)
     #if (d = 0)
         object {
@@ -48,4 +76,5 @@ background {
     color rgb <0,0,0>
 }
 
+//Glow(<1,1,1>, <1,-1,-1>, <-1, 1, -1>, <-1, -1, 1>)
 Sierpinski(2, <1,1,1>, <1,-1,-1>, <-1, 1, -1>, <-1, -1, 1>)
